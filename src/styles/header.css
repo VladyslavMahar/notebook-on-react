@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  padding: 25px;
+  width: 100%;
+  height: 15vh;
+  background: rgb(27, 36, 48);
+  color: #fafafa;
+  align-items: center;
+  justify-content: space-between;
+}
+.addIcon {
+  transform: scale(3);
+  cursor: pointer;
+}

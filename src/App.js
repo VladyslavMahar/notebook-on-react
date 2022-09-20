@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Form from "./components/Form";
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
+import MyModal from "./components/UI/MyModal/MyModal";
 
 function App() {
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+  const [modal, setModal] = useState(false);
+
+  const taskHendler = (body, id) => {
+    if (id) {
+      const newTask = { id: id, body: body };
+      if (body === "") {
+        const temp = tasks.filter((task) => task.id !== id);
+        setTasks(temp);
+        localStorage.setItem("tasks", JSON.stringify(temp));
+      } else {
+        const temp = [newTask, ...tasks.filter((task) => task.id !== id)].sort(
+          (a, b) => (a.id > b.id ? 1 : -1)
+        );
+        setTasks(temp);
+        localStorage.setItem("tasks", JSON.stringify(temp));
+      }
+    } else {
+      if (body !== "") {
+        const newTask = { id: Date.now(), body: body };
+        setTasks([...tasks, newTask]);
+        localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
+      }
+    }
+    setModal(false);
+  };
+
+  const dropTask = (id) => {
+    const temp = tasks.filter((task) => task.id !== id);
+    setTasks(temp);
+    localStorage.setItem("tasks", JSON.stringify(temp));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header taskHendler={taskHendler} visible={modal} setVisible={setModal} />
+      <MyModal visible={modal} setVisible={setModal}>
+        <Form taskHendler={taskHendler} />
+      </MyModal>
+      <Tasks taskHendler={taskHendler} dropTask={dropTask} tasks={tasks} />
     </div>
   );
 }

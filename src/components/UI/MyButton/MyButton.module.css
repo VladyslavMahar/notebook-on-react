@@ -1,0 +1,10 @@
+.myBtn {
+  outline: none;
+  cursor: pointer;
+  border: 1px solid gray;
+  background: rgb(81, 85, 126);
+  color: aliceblue;
+  max-height: 40px;
+  padding: 5px;
+  border-radius: 5px;
+}

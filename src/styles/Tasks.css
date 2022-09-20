@@ -1,0 +1,16 @@
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  padding: 10px;
+}
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+    min-height: 100vh;
+    height: 100%;
+  }
+}
