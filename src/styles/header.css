@@ -7,8 +7,10 @@ header {
   color: #fafafa;
   align-items: center;
   justify-content: space-between;
+  color: rgb(214, 213, 168);
 }
 .addIcon {
   transform: scale(3);
   cursor: pointer;
+  color: rgb(214, 213, 168);
 }

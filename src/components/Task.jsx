@@ -18,27 +18,30 @@ const Task = (props) => {
   if (!update) {
     return (
       <div onClick={updateTask} className="task">
-        <div>{props.task.body}</div>
-        <div className="btnFunc">
+        <div className="content">
+          <div>{props.task.body}</div>
           <FiDelete onClick={deleteTask} />
         </div>
+        <span>{props.task.create}</span>
       </div>
     );
   } else {
     return (
       <div className="task">
-        <textarea
-          autoFocus
-          value={updateBody}
-          onChange={(e) => setUpdateBody(e.target.value)}
-          className="updatedTask"
-        ></textarea>
-        <IoCheckmarkCircleOutline
-          onClick={() => {
-            props.taskHendler(updateBody, props.task.id);
-            setUpdate(false);
-          }}
-        />
+        <div className="content">
+          <textarea
+            autoFocus
+            value={updateBody}
+            onChange={(e) => setUpdateBody(e.target.value)}
+            className="updatedTask"
+          ></textarea>
+          <IoCheckmarkCircleOutline
+            onClick={() => {
+              props.taskHendler(updateBody, props.task.id);
+              setUpdate(false);
+            }}
+          />
+        </div>
       </div>
     );
   }

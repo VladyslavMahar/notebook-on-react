@@ -12,7 +12,11 @@ const Form = (props) => {
   };
   return (
     <form>
-      <MyTextarea value={body} onChange={(e) => setBody(e.target.value)} />
+      <MyTextarea
+        placeholder="..."
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+      />
       <MyButton onClick={(e) => newTask(e)}>New Task</MyButton>
     </form>
   );
