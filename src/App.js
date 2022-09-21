@@ -34,7 +34,7 @@ function App() {
         const newTask = {
           id: Date.now(),
           body: body,
-          create: moment().format("DD-mm-yy"),
+          create: moment().format("DD-MM-yy"),
         };
         setTasks([...tasks, newTask]);
         localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
