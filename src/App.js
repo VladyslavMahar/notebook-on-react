@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import MyModal from "./components/UI/MyModal/MyModal";
 import moment from "moment/moment";
-// Notebook on React js
+// Notebook on React js update
 function App() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
